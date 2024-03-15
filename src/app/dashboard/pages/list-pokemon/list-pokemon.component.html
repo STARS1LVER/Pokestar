@@ -1,1 +1,12 @@
-<p>list-pokemon works!</p>
+
+<section>
+
+
+  <div>
+    @for (data of listPokemon; track $index) {
+      <app-card-pokemon [pokemonData]="data" ></app-card-pokemon>
+    }
+  </div>
+
+
+</section>
