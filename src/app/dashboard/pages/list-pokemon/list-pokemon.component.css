@@ -1,0 +1,15 @@
+
+.conatiner-section{
+  padding: 20px;
+  height: 100vh;
+
+}
+
+
+.game-container{
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}

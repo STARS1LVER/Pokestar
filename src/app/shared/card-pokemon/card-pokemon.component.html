@@ -1,9 +1,37 @@
-
-<div class="card" style="width: 18rem;">
-  <img [srcset]="extraerId( pokemonData.url) | ImagePoke" class="card-img-top" alt="...">
+<!-- <div class="card" style="width: 13rem;">
+  <img [srcset]="extraerId( pokemonData.url) | ImagePoke" class="card-img-top" style="height: 150px;" alt="...">
   <div class="card-body">
     <h5 class="card-title"> {{ pokemonData.name | titlecase }} </h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text"></p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-</div>
+</div> -->
+
+@if (pokemon) {
+  <div class="pokemon">
+    <p class="pokemon-id-back">#{{ extraerId(pokemonData.url) }}</p>
+    <div class="pokemon-imagen">
+      <img
+        [srcset]="extraerId(pokemonData.url) | ImagePoke"
+        style="height: 150px"
+        alt="Pikachu"
+      />
+    </div>
+    <div class="pokemon-info">
+      <div class="nombre-contenedor">
+        <p class="pokemon-id">#0{{ extraerId(pokemonData.url) }}</p>
+        <h2 class="pokemon-nombre">{{ pokemonData.name | titlecase }}</h2>
+      </div>
+      <div class="pokemon-tipos">
+        @for (type of pokemon.types; track $index) {
+          <p  [className]="type.type.name "> {{ type.type.name }}  </p>
+        }
+      </div>
+      <div class="pokemon-stats">
+        @for (stat of pokemon.stats.slice(0,2); track $index) {
+          <p class="stat"> {{ stat.base_stat }}  </p>
+        }
+      </div>
+    </div>
+  </div>
+}
