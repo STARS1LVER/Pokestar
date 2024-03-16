@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Result } from '../../interfaces/poke-list';
 import { ImagePokePipe } from '../../pipes/pipes.pipe';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
@@ -12,7 +12,7 @@ import { Pokemon } from '../../interfaces/pokemon-interface';
   templateUrl: './card-pokemon.component.html',
   styleUrl: './card-pokemon.component.css'
 })
-export class CardPokemonComponent implements OnInit {
+export class CardPokemonComponent implements OnInit, OnChanges {
 
   public pokemon!: Pokemon
 
@@ -22,8 +22,16 @@ export class CardPokemonComponent implements OnInit {
 
   private pokemonService = inject(PokemonService)
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if( changes ){
+      this.getInfoPokemon()
+    }
+  }
+
   ngOnInit(): void {
     this.getInfoPokemon()
+    console.log(this.pokemonData)
     if( !this.pokemonData ) throw new Error('Property is required');
   }
 

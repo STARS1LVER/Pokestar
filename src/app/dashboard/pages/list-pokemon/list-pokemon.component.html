@@ -1,9 +1,12 @@
 
-<section class="container-section">
+<section class="container-section" style="background-image: url(assets/image/container.png)">
 
 
   <h1 class="text-center">All pokemons</h1>
 
+  <div>
+    <app-pagination-pokemon (pageChange)="onPageChange($event)"></app-pagination-pokemon>
+  </div>
 
   <div class="container">
     <div class="game-container">
@@ -12,6 +15,8 @@
       }
    </div>
   </div>
+
+
 
 
 </section>

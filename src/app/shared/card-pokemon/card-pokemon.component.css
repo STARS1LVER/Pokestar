@@ -73,7 +73,7 @@
   display: flex;
   gap: .5rem;
   font-size: .85rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   flex-wrap: wrap;
   justify-content: center;
 }

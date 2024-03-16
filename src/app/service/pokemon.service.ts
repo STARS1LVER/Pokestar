@@ -19,8 +19,8 @@ export class PokemonService {
    * Usamos el operador rxjs map para filtrar directamente el resulstado
    * @returns un Observable<Result[]>
    */
-  public getListPokemon(): Observable<Result[]>  {
-    return this.httpClient.get<PokeList>(`${environments.baseUrl}pokemon?limit=15&offset=1`)
+  public getListPokemon(currentPage: number): Observable<Result[]>  {
+    return this.httpClient.get<PokeList>(`${environments.baseUrl}pokemon?limit=15&offset=${currentPage}`)
     .pipe(
       map( ( respuesta )  => respuesta.results )
     )

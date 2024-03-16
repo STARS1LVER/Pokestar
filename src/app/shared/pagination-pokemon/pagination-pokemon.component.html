@@ -1,0 +1,13 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item " >
+      <button  (click)="changePage( page - 1  )" class="page-link">Previous</button>
+    </li>
+    <li class="page-item"><button (click)="changePage( page = 1)" class="page-link" href="#">1</button></li>
+    <li class="page-item"><button (click)="changePage( page = 2)" class="page-link" href="#">2</button></li>
+    <li class="page-item"><button (click)="changePage( page = 3 )" class="page-link" href="#">3</button></li>
+    <li class="page-item">
+      <button (click)="changePage( page + 1 )" class="page-link" href="#">Next</button>
+    </li>
+  </ul>
+</nav>
