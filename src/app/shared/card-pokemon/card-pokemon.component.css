@@ -1,3 +1,8 @@
+.pokemon:hover {
+  transform: translateY(-5px);
+  transition: transform 0.5s ease; /* Ajusta la duración de la animación según tus preferencias */
+}
+
 
 /* Estilos para card pokemon */
 

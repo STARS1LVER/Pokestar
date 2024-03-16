@@ -29,7 +29,8 @@
       </div>
       <div class="pokemon-stats">
         @for (stat of pokemon.stats.slice(0,2); track $index) {
-          <p class="stat"> {{ stat.base_stat }}  </p>
+          <!--                                    < Aqui validamos si esta en la pocision 1 muestra la M esto lo hacemos con un operador ternario      -->
+          <p class="stat"> {{ stat.base_stat }} {{ $index === 1 ? 'M': '' }} </p>
         }
       </div>
     </div>
