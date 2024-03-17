@@ -8,7 +8,7 @@
 </div> -->
 
 @if (pokemon) {
-  <div class="pokemon">
+  <div class="pokemon" [routerLink]="['/dashboard/info-pokemon/',extraerId( pokemonData.url)]">
     <p class="pokemon-id-back">#{{ extraerId(pokemonData.url) }}</p>
     <div class="pokemon-imagen">
       <img

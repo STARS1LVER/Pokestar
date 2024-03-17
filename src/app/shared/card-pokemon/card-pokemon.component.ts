@@ -1,14 +1,19 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { Result } from '../../interfaces/poke-list';
-import { ImagePokePipe } from '../../pipes/pipes.pipe';
+import { ImagePokePipe } from '../../pipes/imageCard.pipe';
 import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { PokemonService } from '../../service/pokemon.service';
 import { Pokemon } from '../../interfaces/pokemon-interface';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card-pokemon',
   standalone: true,
-  imports: [ImagePokePipe, TitleCasePipe, UpperCasePipe],
+  imports: [
+    ImagePokePipe,
+    TitleCasePipe,
+    UpperCasePipe,
+    RouterModule  ],
   templateUrl: './card-pokemon.component.html',
   styleUrl: './card-pokemon.component.css'
 })
@@ -31,7 +36,7 @@ export class CardPokemonComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getInfoPokemon()
-    console.log(this.pokemonData)
+    // console.log(this.pokemonData)
     if( !this.pokemonData ) throw new Error('Property is required');
   }
 

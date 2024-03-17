@@ -1,1 +1,61 @@
-<p>info-pokemon works!</p>
+@if (pokemon) {
+
+<section style="background-image: url(assets/image/container.png)">
+  <h1 class="text-center">{{ pokemon.name | titlecase }} N.º0{{ pokemon.id }}</h1>
+  <article class="content-info-pokemon" >
+
+    <div>
+      <div class="content-img">
+        <img [srcset]="pokemon | ImageInfo" alt="" />
+      </div>
+
+      @for (stat of pokemon.stats; track $index) {
+        <span> {{ stat.stat.name | titlecase }} </span>
+        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" [style.width.%]="stat.base_stat  * 0.50 "></div>
+        </div>
+
+      }
+
+    </div>
+
+    <div class="all-letter">
+      <p class="description">
+        {{ pokemonDescription?.flavor_text }}
+      </p>
+
+      <div class="characters-pokemon">
+        <div>
+          <span> Altura: </span>
+          <p>  {{ pokemon.height }}</p>
+          <span> Movimiento: </span>
+          <p>{{ pokemon.moves[0].move.name  | titlecase }}</p>
+        </div>
+        <div>
+          <span> Peso:  </span>
+          <p>{{ pokemon.weight | WeightPipe }}</p>
+          <span> Sexo: </span>
+          <div>
+            <i class="fa-solid fa-mars " style="color: #2c2c2c"></i>
+            <i class="fa-solid fa-venus" style="color: #2c2c2c"></i>
+          </div>
+        </div>
+
+
+      </div>
+      <div>
+        <p> Tipo: </p>
+        @for (type of pokemon.types; track $index) {
+          <button [className]="type.type.name" >  {{ type.type.name | titlecase  }}  </button>
+        }
+      </div>
+
+
+    </div>
+  </article>
+
+  <button [routerLink]="['/dashboard/info-pokemon', pokemon.id + 1 ]" > siguiente </button>
+
+</section>
+
+}

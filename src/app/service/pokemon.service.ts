@@ -4,6 +4,7 @@ import { environments } from '../../environments/environments';
 import { Observable, map } from 'rxjs';
 import { PokeList, Result } from '../interfaces/poke-list';
 import { Pokemon } from '../interfaces/pokemon-interface';
+import { PokeDetails } from '../interfaces/pokemonMoreinfo';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class PokemonService {
 
   public getPokemonById( id: string ): Observable<Pokemon>{
     return this.httpClient.get<Pokemon>(`${environments.baseUrl}pokemon/${id}`)
+  }
+
+  public getMoreDetailsToPokemon( id: string ) :Observable<PokeDetails> {
+    return this.httpClient.get<PokeDetails>(`${environments.baseUrl}pokemon-species/${id}`)
   }
 }

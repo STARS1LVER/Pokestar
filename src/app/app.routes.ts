@@ -7,6 +7,11 @@ export const routes: Routes = [
     loadComponent: () => import('./dashboard/dashboard.component'),
     children: [
       {
+        path: 'home',
+        title: 'Home',
+        loadComponent: () => import('./dashboard/pages/home/home.component')
+      },
+      {
         path: 'list-pokemon',
         title: 'List Pokemon',
         loadComponent: () => import('./dashboard/pages/list-pokemon/list-pokemon.component')

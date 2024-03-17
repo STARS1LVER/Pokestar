@@ -15,6 +15,9 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  font-family: "Viga", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .pokemon-id-back {

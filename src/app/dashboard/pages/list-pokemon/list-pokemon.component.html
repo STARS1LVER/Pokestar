@@ -4,6 +4,14 @@
 
   <h1 class="text-center">All pokemons</h1>
 
+
+  <!-- <button (click)="filterType('')" > click</button> -->
+
+  <div>
+    <app-filter-options  ></app-filter-options>
+  </div>
+
+
   <div>
     <app-pagination-pokemon (pageChange)="onPageChange($event)"></app-pagination-pokemon>
   </div>
