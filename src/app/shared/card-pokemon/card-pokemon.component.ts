@@ -26,14 +26,12 @@ export class CardPokemonComponent implements OnInit {
     required: true
   }) public pokemon!: Pokemon
 
-  private pokemonService = inject(PokemonService)
-
 
 
 
   ngOnInit(): void {
     // console.log(this.pokemonData)
-    if( !this.pokemon ) throw new Error('Property is required');
+    // if( !this.pokemon ) throw new Error('Property is required');
   }
 
 

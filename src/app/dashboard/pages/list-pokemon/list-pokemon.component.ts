@@ -7,6 +7,7 @@ import { PaginationPokemonComponent } from '../../../shared/pagination-pokemon/p
 import { FilterOptionsComponent } from '../../../shared/filter-options/filter-options.component';
 import { Pokemon } from '../../../interfaces/pokemon-interface';
 import { HttpClient } from '@angular/common/http';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -16,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
     CardPokemonComponent,
     PaginationPokemonComponent,
     FilterOptionsComponent,
+    SpinnerComponent
   ],
   templateUrl: './list-pokemon.component.html',
   styleUrl: './list-pokemon.component.css',
@@ -54,7 +56,7 @@ export default class ListPokemonComponent implements OnInit {
     const totalPage = Math.ceil( 1302/15 )
     if (this.currentPage <= 0 || this.currentPage > totalPage) return;
     this.getPokemonList(this.currentPage,this.filterByType);
-    
+
   }
 
   // private getListFilterPokemon(type: string){

@@ -1,0 +1,16 @@
+.error-content{
+  border:3px solid red;
+  padding:10px;
+  border-radius: 10px;
+  font-family: "Viga", sans-serif;
+}
+
+.error-content p {
+color: gray;
+}
+
+.error-content h2 {
+font-size:25px;
+color: rgb(244, 12, 12);
+}
+

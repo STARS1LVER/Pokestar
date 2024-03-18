@@ -43,7 +43,6 @@ export default class InfoPokemonComponent implements OnInit {
       switchMap(({ id }) => this.pokemonService.getPokemonById(id)),
       tap(data => this.pokemon = data),
       switchMap(({ id }) => this.pokemonService.getMoreDetailsToPokemon(id.toString())),
-      delay(1500),
       tap(data => {
         if (!data) {
           this.router.navigate(['dashboard/home']);

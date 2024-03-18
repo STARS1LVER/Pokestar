@@ -1,0 +1,65 @@
+
+main{
+  /* border: 1px solid green; */
+  display: flex;
+  height: 100vh;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.form-poke{
+  width: 300px;
+  margin-top: 20px;
+}
+
+.content-form{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+
+
+.content-card{
+  /* border: 1px solid red; */
+  width: 500px;
+}
+
+.input-poke {
+  border-radius: 10px;
+  outline: 2px solid #FEBF00;
+  border: 0;
+  width: 300px;
+  background-color: #434343;
+  outline-offset: 3px;
+  padding: 10px 1rem;
+  transition: 0.25s;
+  font-family: "Viga", sans-serif;
+}
+
+.input-poke:focus {
+  outline-offset: 5px;
+  background-color: #fff
+}
+
+.label-form{
+  font-family: "Viga", sans-serif;
+  margin-bottom: 5px;
+
+}
+
+
+@media screen and (max-width: 655px) {
+  .content-card{
+    width: 300px;
+  }
+
+  .error-content{
+    width: 300px;
+}
+
+}

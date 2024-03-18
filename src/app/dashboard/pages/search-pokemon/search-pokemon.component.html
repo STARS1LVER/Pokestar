@@ -1,1 +1,28 @@
-<p>search-pokemon works!</p>
+
+<main style="background-image: url(assets/image/container.png)">
+
+  <form [formGroup]="myInputForm" (ngSubmit)="onSubmitForm()" class="form-poke" >
+    <label class="label-form" for="">Busca Tu Pokemon Favorito</label>
+    <input formControlName="name" type="text" placeholder="Write here..." name="text" class="input-poke">
+
+  </form>
+
+  <section class="content-form">
+
+      @if (errorForms) {
+        <app-error-form [infoError]="getFieldError()" > </app-error-form>
+      } 
+
+      @if (error === 404) {
+        <app-error-pokemon></app-error-pokemon>
+      } @else {
+        <div class="content-card">
+            <app-card-pokemon [pokemon]="pokemon" ></app-card-pokemon>
+        </div>
+
+      }
+
+
+  </section>
+
+</main>
