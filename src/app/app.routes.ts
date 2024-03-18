@@ -28,7 +28,7 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'list-pokemon',
+        redirectTo: 'home',
         pathMatch: 'full'
       }
     ],
