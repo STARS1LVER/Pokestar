@@ -8,6 +8,7 @@ import { FilterOptionsComponent } from '../../../shared/filter-options/filter-op
 import { Pokemon } from '../../../interfaces/pokemon-interface';
 import { HttpClient } from '@angular/common/http';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
+import { ShowImageComponent } from '../../../shared/show-image/show-image.component';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -17,7 +18,8 @@ import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
     CardPokemonComponent,
     PaginationPokemonComponent,
     FilterOptionsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ShowImageComponent
   ],
   templateUrl: './list-pokemon.component.html',
   styleUrl: './list-pokemon.component.css',
@@ -28,6 +30,8 @@ export default class ListPokemonComponent implements OnInit {
   public currentPage: number = 1;
   public filterByType: string | undefined
   public totalPage!: number
+  public image!: string
+
 
 
 
@@ -72,6 +76,9 @@ export default class ListPokemonComponent implements OnInit {
   }
 
 
+  public getshowImage( img: string ){
+    this.image = img
+  }
 
 
 

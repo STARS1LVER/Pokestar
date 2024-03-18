@@ -9,6 +9,17 @@
 
 }
 
+.showImage{
+  height: 40px;
+  width:50px;
+}
+
+.container-pokemons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .game-container{
   padding: 30px;

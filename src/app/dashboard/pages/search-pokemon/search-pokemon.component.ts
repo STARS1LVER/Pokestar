@@ -49,7 +49,8 @@ export default class SearchPokemonComponent  {
   public getDataPokemonById(  ){
     this.errorForms = false;
     this.error = 0;
-    this.pokemonService.getPokemonById( this.myInputForm.controls['name'].value )
+    const pokemon = this.myInputForm.controls['name'].value.toLowerCase()
+    this.pokemonService.getPokemonById( pokemon )
     .subscribe({
       next: ( data ) => {
           this.pokemon = data

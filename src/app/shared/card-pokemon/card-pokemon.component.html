@@ -7,14 +7,20 @@
   </div>
 </div> -->
 
+
+
 @if (pokemon) {
-  <div class="pokemon" [routerLink]="['/dashboard/info-pokemon/',pokemon.id]">
+
+
+
+  <div class="pokemon" >
     <p class="pokemon-id-back">#{{  pokemon.id }}</p>
     <div class="pokemon-imagen">
       <img
         [srcset]= "pokemon | ImageNull"
         style="height: 150px"
         alt="Pikachu"
+        [routerLink]="['/dashboard/info-pokemon/',pokemon.id]"
       />
     </div>
     <div class="pokemon-info">
@@ -34,5 +40,7 @@
         }
       </div>
     </div>
+    <button (click)="changePage( pokemon.sprites.front_default)" > Show Image </button>
+
   </div>
 }

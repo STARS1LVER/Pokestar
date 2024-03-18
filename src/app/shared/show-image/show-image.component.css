@@ -1,0 +1,14 @@
+
+.image-alone{
+  width: 600px;
+  /* border: 1px solid red; */
+  height: 150px;
+  display:flex ;
+  justify-content: center;
+
+}
+
+img{
+  height: 140px;
+  /* width: 100px; */
+}
