@@ -8,19 +8,19 @@
 </div> -->
 
 @if (pokemon) {
-  <div class="pokemon" [routerLink]="['/dashboard/info-pokemon/',extraerId( pokemonData.url)]">
-    <p class="pokemon-id-back">#{{ extraerId(pokemonData.url) }}</p>
+  <div class="pokemon" [routerLink]="['/dashboard/info-pokemon/',pokemon.id]">
+    <p class="pokemon-id-back">#{{  pokemon.id }}</p>
     <div class="pokemon-imagen">
       <img
-        [srcset]="extraerId(pokemonData.url) | ImagePoke"
+        [srcset]= "pokemon | ImageNull"
         style="height: 150px"
         alt="Pikachu"
       />
     </div>
     <div class="pokemon-info">
       <div class="nombre-contenedor">
-        <p class="pokemon-id">#0{{ extraerId(pokemonData.url) }}</p>
-        <h2 class="pokemon-nombre">{{ pokemonData.name | titlecase }}</h2>
+        <p class="pokemon-id">#0{{ pokemon.id }}</p>
+        <h2 class="pokemon-nombre">{{ pokemon.name| titlecase }}</h2>
       </div>
       <div class="pokemon-tipos">
         @for (type of pokemon.types; track $index) {

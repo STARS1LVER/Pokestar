@@ -1,0 +1,33 @@
+.c-footer{
+  padding: 10px;
+  font-family: "Viga", sans-serif;
+
+}
+
+.c-footer a {
+  text-decoration: none;
+  color: #1e1e1e;
+
+}
+
+.c-footer h5 {
+  color: #181818;
+}
+
+.c-footer p {
+  color: #171717;
+}
+
+.img-footer{
+  height: 80px;
+  border-radius: 9px;
+  box-shadow: 10px 10px 17px -8px #212121;
+
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

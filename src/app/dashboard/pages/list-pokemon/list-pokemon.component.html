@@ -2,24 +2,25 @@
 <section class="container-section" style="background-image: url(assets/image/container.png)">
 
 
-  <h1 class="text-center">All pokemons</h1>
-
-
   <!-- <button (click)="filterType('')" > click</button> -->
 
+  <!-- <div class="inicio-text" style="background-image: url(assets/image/gray.png)">
+    <p class="text-center"> Aqui puedes mirar e aprendes de tus pokemones favoritos! </p>
+  </div> -->
+
   <div>
-    <app-filter-options  ></app-filter-options>
+    <app-filter-options (filterChange)="filterType($event)" ></app-filter-options>
   </div>
 
 
   <div>
-    <app-pagination-pokemon (pageChange)="onPageChange($event)"></app-pagination-pokemon>
+    <app-pagination-pokemon [page]="currentPage" [total]="totalPage" (pageChange)="onPageChange($event)"></app-pagination-pokemon>
   </div>
 
   <div class="container">
     <div class="game-container">
       @for (data of listPokemon; track $index) {
-      <app-card-pokemon [pokemonData]="data" ></app-card-pokemon>
+      <app-card-pokemon [pokemon]="data" ></app-card-pokemon>
       }
    </div>
   </div>

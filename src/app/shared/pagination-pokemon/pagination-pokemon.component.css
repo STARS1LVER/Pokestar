@@ -1,0 +1,17 @@
+
+.btn-options{
+  height: 50px;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 10px 10px 17px -8px #666666;
+  width: 60px;
+  margin-left: 5px;
+  font-family: "Viga", sans-serif;
+
+}
+
+.btn-options:hover {
+  background-color: rgb(34, 34, 34);
+  color: #F2F2F2;
+  transition: 1s;
+}

@@ -6,6 +6,8 @@ main{
   font-family: "Viga", sans-serif;
   font-weight: 400;
   font-style: normal;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Imagen pikachu */
@@ -37,7 +39,7 @@ main{
   border: 1px solid blue;
   display: flex ;
   padding: 10px;
-  box-shadow: 10px 10px 17px -8px #666666;
+  box-shadow: 10px 10px 17px -8px #212121;
   border-radius: 9px;
   border: none;
   color: #ffffff;
@@ -46,10 +48,9 @@ main{
 
 
 
-/* Contenedor de botones */
+/* Contenedor de botones
 .contentedor-botones{
   /* border: 1px solid red; */
-}
 
 
 /* contenedor total */

@@ -6,6 +6,7 @@ import { CardPokemonComponent } from '../../../shared/card-pokemon/card-pokemon.
 import { PaginationPokemonComponent } from '../../../shared/pagination-pokemon/pagination-pokemon.component';
 import { FilterOptionsComponent } from '../../../shared/filter-options/filter-options.component';
 import { Pokemon } from '../../../interfaces/pokemon-interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-pokemon',
@@ -21,83 +22,54 @@ import { Pokemon } from '../../../interfaces/pokemon-interface';
 })
 export default class ListPokemonComponent implements OnInit {
   // * Properties:
-  public listPokemon!: Result[];
-  public filteredTypePokemon!: Pokemon[];
+  public listPokemon: Pokemon[] = [];
   public currentPage: number = 1;
-  public idsPokemon: string[] = [];
-  public pokemonCompletedInfolist: Pokemon[] = [];
-  public listprueba: any [] = []
+  public filterByType: string | undefined
+  public totalPage!: number
+
+
 
   // Inyectamos dependencias!
   private pokemonService = inject(PokemonService);
 
   ngOnInit(): void {
-    this.getPokemonList(this.currentPage);
+    this.getPokemonList(this.currentPage, this.filterByType);
+
 
   }
 
-  public getPokemonList(currentPage: number) {
-    this.pokemonService.getListPokemon(currentPage).subscribe({
-      next: (data) => {
-        this.listPokemon = data;
-        const numbers: string[] | undefined = this.getNumberPokemonId( this.listPokemon )
-        if(!numbers) return
-        this.pokemonCompletedInfolist =  this.getPokemonsById(numbers)
-        // this.filteredTypePokemon = [...this.pokemonCompletedInfolist];
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+  public getPokemonList(currentPage: number, type: string | undefined) {
+    this.pokemonService.getListPokemon(currentPage, type).subscribe( data => {
+       this.listPokemon = data.pokemon
+       this.totalPage = data.total
+    } )
+
+
+
+
   }
 
   public onPageChange(page: number) {
     this.currentPage = page;
-    if (this.currentPage <= 0) return;
-    this.getPokemonList(page);
+    const totalPage = Math.ceil( 1302/15 )
+    if (this.currentPage <= 0 || this.currentPage > totalPage) return;
+    this.getPokemonList(this.currentPage,this.filterByType);
+    
   }
 
-  public extraerId(url: string): string {
-    let splitUrl = url.split('/');
-    let numero = splitUrl[splitUrl.length - 2];
-    return numero;
+  // private getListFilterPokemon(type: string){
+  //   this.pokemonService.getListFilterByPokemon(type).subscribe( ( data )c => {
+  //     console.log( data )
+  //   })
+  // }
+
+  public filterType(type: string | undefined){
+    this.currentPage = 1
+    this.filterByType = type
+    this.getPokemonList(this.currentPage,this.filterByType);
   }
 
-  public getNumberPokemonId(listPokemon: Result[]): string[] | undefined {
-    if (!listPokemon) return;
 
-    listPokemon.forEach((pokemonid, index) => {
-      const id = this.extraerId(pokemonid.url);
-      this.idsPokemon.push(id);
-    });
-
-    console.log(this.idsPokemon )
-    return this.idsPokemon;
-  }
-
-  public getPokemonsById( numbers: string[] ){
-
-    numbers.forEach(( number ) => {
-      this.pokemonService.getPokemonById(number)
-      .subscribe({
-        next: ( pokemon ) => {
-          this.pokemonCompletedInfolist.push(pokemon)
-        },
-        error: ( error ) => {
-          console.log(error)
-        }
-      })
-    })
-
-    return this.pokemonCompletedInfolist
-
-  }
-
-  public filterType( tag: string ){
-    this.filteredTypePokemon = this.pokemonCompletedInfolist.filter((pokemon) =>  this.listprueba.push( pokemon.types )   )
-    console.log( this.listprueba[0].type.name )
-
-  }
 
 
 

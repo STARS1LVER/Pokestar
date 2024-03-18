@@ -9,12 +9,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class FilterOptionsComponent {
 
-  public filterOptions: string = ''
+  public filterOptions: string | undefined
 
 
-  @Output() public filterChange = new EventEmitter<string>()
+  @Output() public filterChange = new EventEmitter<string | undefined >()
 
-  public changeFilter(filter: string){
+  public changeFilter(filter: string | undefined){
 
     this.filterOptions = filter;
 

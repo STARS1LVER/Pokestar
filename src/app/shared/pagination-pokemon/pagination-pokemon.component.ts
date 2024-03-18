@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output } from '@angular/core';
+import { Component, Input, Output, input } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -12,17 +12,28 @@ import { EventEmitter } from '@angular/core';
 export class PaginationPokemonComponent {
 
   // Properties:
-  public page: number = 1 ;
+   @Input() public page: number = 1 ;
+  @Input()  public total: number = 20;
+
 
   @Output() public pageChange = new EventEmitter<number>()
 
+  public get maxPage(): number {
+    return Math.ceil(this.total / this.page);
+  }
+
+
   public changePage( page: number ) {
 
+    console.log( this.maxPage , "page:", page )
     this.page = page
-    console.log('desde event', this.page)
-    this.pageChange.emit(this.page )
+    if( this.page < this.maxPage ){
+      this.pageChange.emit(this.page )
+    }
 
   }
+
+
 
 
 

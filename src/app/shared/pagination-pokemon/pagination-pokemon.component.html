@@ -1,13 +1,16 @@
-<nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example" >
   <ul class="pagination justify-content-center">
     <li class="page-item " >
-      <button  (click)="changePage( page - 1  )" class="page-link">Previous</button>
+      <button  class="btn-options" (click)="changePage( page - 1  )" > <i class="fa-solid fa-arrow-left fa-xl" ></i>  </button>
     </li>
-    <li class="page-item"><button (click)="changePage( page = 1)" class="page-link" href="#">1</button></li>
-    <li class="page-item"><button (click)="changePage( page = 2)" class="page-link" href="#">2</button></li>
-    <li class="page-item"><button (click)="changePage( page = 3 )" class="page-link" href="#">3</button></li>
+    @for (item of [page - 1 ,page,page + 1,]; track $index) {
+      @if (item > 0) {
+        <li class="page-item"><button class="btn-options" (click)="changePage( item )"  href="#"> {{ item }} </button></li>
+      }
+    }
+
     <li class="page-item">
-      <button (click)="changePage( page + 1 )" class="page-link" href="#">Next</button>
+      <button class="btn-options" (click)="changePage( page + 1 )"  [disabled]="page > maxPage"  href="#"> <i class="fa-solid fa-arrow-right fa-xl" ></i>  </button>
     </li>
   </ul>
 </nav>

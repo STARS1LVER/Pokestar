@@ -5,6 +5,7 @@ import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { PokemonService } from '../../service/pokemon.service';
 import { Pokemon } from '../../interfaces/pokemon-interface';
 import { RouterModule } from '@angular/router';
+import { ImageNullPipe } from '../../pipes/imagenNull.pipe';
 
 @Component({
   selector: 'app-card-pokemon',
@@ -13,48 +14,29 @@ import { RouterModule } from '@angular/router';
     ImagePokePipe,
     TitleCasePipe,
     UpperCasePipe,
-    RouterModule  ],
+    RouterModule,
+    ImageNullPipe  ],
   templateUrl: './card-pokemon.component.html',
   styleUrl: './card-pokemon.component.css'
 })
-export class CardPokemonComponent implements OnInit, OnChanges {
+export class CardPokemonComponent implements OnInit {
 
-  public pokemon!: Pokemon
 
   @Input({
     required: true
-  }) public pokemonData!: Result
+  }) public pokemon!: Pokemon
 
   private pokemonService = inject(PokemonService)
 
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if( changes ){
-      this.getInfoPokemon()
-    }
-  }
+
 
   ngOnInit(): void {
-    this.getInfoPokemon()
     // console.log(this.pokemonData)
-    if( !this.pokemonData ) throw new Error('Property is required');
-  }
-
-  public extraerId( url: string): string {
-    let splitUrl = url.split('/');
-    let numero = splitUrl[splitUrl.length - 2];
-    return numero;
+    if( !this.pokemon ) throw new Error('Property is required');
   }
 
 
-  public getInfoPokemon(){
-    this.pokemonService.getPokemonById( this.extraerId( this.pokemonData.url )  )
-    .subscribe({
-      next: ( data ) => {
-        this.pokemon = data
-      }
-    })
-  }
 
 }
 
